@@ -1,7 +1,8 @@
 import math
 from tqdm import tqdm
-num = 600851475143
+import time
 
+num = 60085147514320317
 # generate primes until 1/2 of CONST_NUM
 # check through array if CONST_NUM % prime = 0
 # end search when array is complete
@@ -34,10 +35,15 @@ def factorise(num, factor):
             primeFactors.append(factor)
         else:
             return num
-            
+
+time0 = time.time()           
 num = factorise(num,2)
-for factor in tqdm(range(3,num//2 + 1,2)):
+for factor in tqdm(range(3, (int(math.sqrt(num))), 2)):
+#for factor in tqdm(range(3, (num//2 + 1), 2)):
     num = factorise(num, factor)
-
-
 print(primeFactors)
+
+time1 = time.time()
+finalTime = round(time1-time0,1)
+print(f"Time taken: {finalTime}s")
+
