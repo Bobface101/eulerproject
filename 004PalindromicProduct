@@ -1,4 +1,4 @@
-
+maxPalindrome = 0
 def checkPalindrome(num):
 
     string = str(num)
@@ -9,10 +9,14 @@ def checkPalindrome(num):
         firstHalf = string[0:int(len(string)//2)]
         secondHalf = string[int(len(string)//2)+1:][::-1]
     if firstHalf == secondHalf:
-        return string
+        return num
+    else:
+        return 0
 
 for i in range(100,1000):
     for j in range(100,1000):
-            palindromes.append(checkPalindrome((i*j)))
-        except:
-            pass
+        num = checkPalindrome(i*j)
+        if num > maxPalindrome:
+            maxPalindrome = num
+print(maxPalindrome)
+
