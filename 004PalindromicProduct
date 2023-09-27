@@ -1,8 +1,18 @@
-for num in range(100,1000):
-    string = str(num**2)
-    if len(string) % 2 == 0:
-        firstHalf = string[0:len(string)/2 + 1]
-        secondHalf = string[len(num)/2:]
-        print(string, firstHalf, secondHalf)
 
-print("hi")
+def checkPalindrome(num):
+
+    string = str(num)
+    if len(string) % 2 == 0:
+        firstHalf = string[0:int(len(string)/2)]
+        secondHalf = string[int(len(string)/2):][::-1]
+    else:
+        firstHalf = string[0:int(len(string)//2)]
+        secondHalf = string[int(len(string)//2)+1:][::-1]
+    if firstHalf == secondHalf:
+        return string
+
+for i in range(100,1000):
+    for j in range(100,1000):
+            palindromes.append(checkPalindrome((i*j)))
+        except:
+            pass
