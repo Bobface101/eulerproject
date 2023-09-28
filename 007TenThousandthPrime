@@ -1,0 +1,12 @@
+from tqdm import tqdm
+
+Primes = [2]
+for num in range(99999):
+    composite = False
+    for factor in Primes:
+        if num % factor == 0:
+            composite = True
+    if composite == False:
+        Primes.append(num)
+print(Primes[-1])
+                
