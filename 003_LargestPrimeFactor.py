@@ -2,7 +2,7 @@ import math
 from tqdm import tqdm
 import time
 
-num = 600851475143
+num = 60085147514383986298360286109876543234567890987654345678909876543456789098765434567876543456789874
 # generate primes until 1/2 of CONST_NUM
 # check through array if CONST_NUM % prime = 0
 # end search when array is complete

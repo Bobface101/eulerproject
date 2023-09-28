@@ -20,19 +20,26 @@ def factorise(num, factor):
             return int(num)
 
   
-for nummy in range(minimumfactor, maximumfactor+1):
+for nummy in tqdm(range(minimumfactor, maximumfactor+1)):
     num = factorise(nummy,2)
     for factor in range(3, num+1, 2): 
         num = factorise(num, factor)
 
 for factorizedNum in tqdm(primeFactors):
+    BaseInArray = False
     for num in LCM:
         if factorizedNum[0] == num[0] and factorizedNum[1] > num[1]:
+            BaseInArray = True
             LCM.remove(num)
             LCM.append(factorizedNum)
-        if factorizedNum[0] != num[0]:
-            LCM.append(factorizedNum)
-        else:
-            pass
-print(LCM)   
-print("pipi")
+        if factorizedNum[0] == num[0]:
+            BaseInArray = True
+    if BaseInArray == False:
+        LCM.append(factorizedNum)
+
+LCM.remove([0,0])
+total = 1
+print(LCM)
+for num in LCM:
+    total *= num[0]**num[1]
+print(total)
