@@ -1,12 +1,18 @@
 from tqdm import tqdm
-
+import math
 Primes = [2]
-for num in range(99999):
+num = 3
+while len(Primes) < 10_0005:
     composite = False
+    sqrt = math.sqrt(num)
     for factor in Primes:
-        if num % factor == 0:
-            composite = True
+        if factor <= sqrt:
+            if num % factor == 0:
+                composite = True
+        else:
+            break
     if composite == False:
         Primes.append(num)
-print(Primes[-1])
+    num += 2
+print(Primes[10_000])
                 
