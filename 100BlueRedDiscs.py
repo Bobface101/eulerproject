@@ -19,15 +19,13 @@ def solution(n: int) -> float:
 
 
 for n in range(int(10**12), int(10**13)):
-    break
     b = solution(n)
-    
-    if b.is_integer() and (b/n)*((b-1)/(n-1)) == (0.5) and b == 756872327473:
+      
+    if b.is_integer() and (b/n)*((b-1)/(n-1)) == (0.5):
         print(n, b)
-        print((b/n)*((b-1)/(n-1)))
         
 
-
+"""
 n, b = 1000153591841, 707215387019
 r = n -b
 print(r)
@@ -35,7 +33,7 @@ print(b + r > 10*12)
 print(b/n)
 print((b-1)/(n-1))
 print((b/n)*((b-1)/(n-1)))
-
+"""
 
 
 
