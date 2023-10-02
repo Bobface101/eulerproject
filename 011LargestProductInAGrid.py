@@ -18,11 +18,62 @@ grid = ["08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08",
 "20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16",
 "20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54",
 "01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48"]
-for j in range(600):
 
-    productForward = 1
-    productDown = 1
-    productDiagonal = 1
+newGrid = []
+maxProduct = 0
+maxes = []
+print(grid[1].replace(" ", ""))
 
-    for i in range(4):
-        pass
+for row in grid:
+    temp = row.replace(" ", "")
+    print(temp)
+    newLine = []
+    for i, char in enumerate(temp):
+        if i % 2 == 0:
+            try:
+                newLine.append([temp[i]+temp[i+1]])
+
+            except:
+                pass
+    list_1D = [item for sub_list in newLine for item in sub_list]
+    newGrid.append(list_1D)
+print(newGrid)
+
+for row in range(20):
+    for column in range(30):
+        productForward = 1
+        productDown = 1
+        productDiagonal = 1
+        try:
+            productForward = int(newGrid[row][column]) * int(newGrid[row][column+1]) * int(newGrid[row][column+2]) * int(newGrid[row][column+3])
+            print(newGrid[row][column], "Product fd:", productForward)
+        except:
+            pass
+        try:
+            productDown = int(newGrid[row][column]) * int(newGrid[row+1][column]) * int(newGrid[row+2][column]) * int(newGrid[row+3][column])
+            print(newGrid[row][column], "Product dwn:", productDown)
+        except:
+            pass
+        try:
+            productDiagonalUp = int(newGrid[row][column]) * int(newGrid[row+1][column+1]) * int(newGrid[row+2][column+2]) * int(newGrid[row+3][column+3])
+            print(newGrid[row][column], "Product diagonal up:", productDiagonalUp)
+        except:
+            pass
+        try:
+            productDiagonalDown = int(newGrid[row][column]) * int(newGrid[row+1][column-1]) * int(newGrid[row+2][column-2]) * int(newGrid[row+3][column-3])
+            print(newGrid[row][column], "Product diagonal down:", productDiagonalDown)
+        except:
+            pass
+        if productDiagonalUp > maxProduct:
+            maxProduct = productDiagonalUp
+
+        if productDiagonalDown > maxProduct:
+            maxProduct = productDiagonalDown
+
+        if productDown > maxProduct:
+            maxProduct = productDown
+
+        if productForward > maxProduct:
+            maxProduct = productForward
+
+print("Max product:",maxProduct) 
