@@ -10,7 +10,7 @@ What is the value of the first triangle number to have over five hundred divisor
 from tqdm import tqdm
 import math
 
-num = 20
+num = 2034567890987654
 
 
 def generateTriangles(max):
@@ -34,16 +34,14 @@ def fullyfactorise(num):
             print(num)
         else:
             break
-    for factor in range(3, int(math.sqrt(num)+2), 2):
-        while True:
-            if num % factor == 0:
-                num /= factor
-                
-                primeFactors.append(factor)
-            else:
-                break
-        if num == 1: #fix this part 
-            break
+
+    factor = 3
+    while factor <= num:
+        if num % factor == 0:
+            num /= factor           
+            primeFactors.append(factor)
+        factor += 2
+
 
         
 
