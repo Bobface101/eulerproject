@@ -11,7 +11,6 @@ What is the value of the first triangle number to have over five hundred divisor
 from tqdm import tqdm 
 import math
 
-num = 200
 
 
 def generateTriangles(max):
@@ -40,7 +39,8 @@ def fullyfactorise(num):
         if num % factor == 0:
             num /= factor           
             primeFactors.append(factor)
-        factor += 2
+        else:
+            factor += 2
     
     if num > 1:
         primeFactors.append(int(num))
@@ -48,7 +48,8 @@ def fullyfactorise(num):
     return primeFactors
 
 def formatNum(primeFactors):
-    """formats a list of prime factors into one with the base to the power of an exponent
+    """
+    Formats a list of prime factors into one with the base to the power of an exponent
 
     Args:
         primeFactors (array): list of prime factors of num
@@ -72,8 +73,11 @@ def calculateNumFactors(formattedArray):
         numFactors *= (baseXexponent[1]+1)
     return numFactors
  
-for triangle in generateTriangles(1_000_000):
+
+triangles = generateTriangles(1_000_000)
+
+for triangle in triangles:
     numFactors = calculateNumFactors(formatNum(fullyfactorise(triangle)))
     if numFactors > 500:
         print(triangle, "has over 500 factors.", (numFactors))
-
+        break
