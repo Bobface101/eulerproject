@@ -2,15 +2,16 @@
 
 Let us list the factors of the first seven triangle numbers:
 
+* * * * * * * 
  
 We can see that 28 is the first triangle number to have over five divisors.
 
 What is the value of the first triangle number to have over five hundred divisors?"""
 
-from tqdm import tqdm
+from tqdm import tqdm 
 import math
 
-num = 2034567890987654
+num = 200
 
 
 def generateTriangles(max):
@@ -25,7 +26,7 @@ def generateTriangles(max):
 def fullyfactorise(num):
 
     primeFactors = []
-
+    sqrt = num**0.5
     factor = 2
     while True:
         if num % factor == 0:
@@ -36,17 +37,12 @@ def fullyfactorise(num):
             break
 
     factor = 3
-    while factor <= num:
+    while factor < sqrt+1:
         if num % factor == 0:
             num /= factor           
             primeFactors.append(factor)
         factor += 2
 
-
-        
-
-
-    
     return primeFactors
 
 
@@ -55,6 +51,6 @@ def fullyfactorise(num):
 print(fullyfactorise(num))
 
 
-#print(generateTriangles(10000))
+print(generateTriangles(10000))
 
         
