@@ -32,7 +32,6 @@ def fullyfactorise(num):
         if num % factor == 0:
             num /= factor
             primeFactors.append(factor)
-            print(num)
         else:
             break
 
@@ -42,15 +41,39 @@ def fullyfactorise(num):
             num /= factor           
             primeFactors.append(factor)
         factor += 2
+    
+    if num > 1:
+        primeFactors.append(int(num))
 
     return primeFactors
 
+def formatNum(primeFactors):
+    """formats a list of prime factors into one with the base to the power of an exponent
 
+    Args:
+        primeFactors (array): list of prime factors of num
+
+    Returns:
+        2D array: Base**exponent
+    """
+    formattedNum = [[]]
+    for i, prime in enumerate(primeFactors):
+        if primeFactors[i-1] == prime:
+            continue
+        else:
+            formattedNum.append([prime, primeFactors.count(prime)])
+    formattedNum.remove([])
+    return formattedNum
+
+
+def calculateNumFactors(formattedArray):
+    numFactors = 1
+    for baseXexponent in formattedArray:
+        numFactors *= (baseXexponent[1]+1)
+    return numFactors
  
+for triangle in generateTriangles(1_000_000):
+    numFactors = calculateNumFactors(formatNum(fullyfactorise(triangle)))
+    if numFactors > 500:
+        print(triangle, "has over 500 factors.", (numFactors))
 
-print(fullyfactorise(num))
-
-
-print(generateTriangles(10000))
-
-        
