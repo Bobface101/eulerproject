@@ -110,9 +110,16 @@ string = """
 53503534226472524250874054075591789781264330331690
 """
 
-# formatting string
+array = []
 
-for i in range(0,len(string)+1,50):
-    print(i,i+49)
-    print(string[i:i+49])
+for i in range(0,len(string)+1,51):
+    try:
+        array.append(int(string[i+1:i+51]))
+    except:
+        pass
+
+sum = 0
+for num in array:
+    sum += num
+print(str(sum)[0:10])
 
