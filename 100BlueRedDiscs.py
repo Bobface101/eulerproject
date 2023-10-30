@@ -35,7 +35,11 @@ print((b-1)/(n-1))
 print((b/n)*((b-1)/(n-1)))
 """
 
+def brahmaguptaComposition(p1, p2):
+    pass
+#use brahmaguptas identity to recursively generate new solutions usng the first 2 points given
 
+""""""
 
 
 
