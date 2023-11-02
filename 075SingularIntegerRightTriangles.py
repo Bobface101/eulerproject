@@ -26,4 +26,5 @@ def generateTriplets(max):
                     triplets.append([a,b,c])
     return triplets
 
-print(generateTriplets(1_500_000))
+def euclidFormula(max):
+    pass
