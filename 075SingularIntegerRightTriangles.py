@@ -16,15 +16,42 @@ for example, using  it is possible to form exactly three different integer sided
 Given that L is the length of the wire, for how many values of L <= 1_500_000 can exactly one integer sided right angle triangle be formed?"""
 
 from tqdm import tqdm
+import math
 
-def generateTriplets(max):
-    triplets = []
-    for a in tqdm(range(1,max//2)):
-        for b in range(1,max//2):
-            for c in range(1,max//2):
-                if a**2 + b**2 == c**2 and a+b+c < max:
-                    triplets.append([a,b,c])
-    return triplets
+def generate_list(max):
+    list = []
+    for k in range(1,max):
+        for m in range(1,max):
+            for n in range(1,m+1):
+                if math.gcd(n,m) == 1 and (n*m)%2==0:
+                        a=k*(m**2-n**2)
+                        b=k*(2*m*n)
+                        c=k*(m**2+n**2)
+                        list.append([k,a,b,c])
+    return list
 
-def euclidFormula(max):
-    pass
+def generate_list_2(max):
+    list = []
+    
+    for k in range(1,max+1):
+        for m in range(1,max+1):
+            for n in range(1,m+1):
+                if math.gcd(n,m) == 1 and (n*m)%2==0:
+                        a=k*(m**2-n**2)
+                        b=k*(2*m*n)
+                        c=k*(m**2+n**2)
+                        list.append([a,b,c])
+                if len(list) == max:
+                     break
+            else:
+                continue
+            break
+        else:
+            continue
+        break
+                     
+    return list
+
+# make list iterate until len(list) is == max
+
+print(generate_list_2(4))
