@@ -18,24 +18,15 @@ Given that L is the length of the wire, for how many values of L <= 1_500_000 ca
 from tqdm import tqdm
 import math
 
+sums = []
+
 def generate_list(max):
     list = []
-    for k in range(1,max):
-        for m in range(1,max):
-            for n in range(1,m+1):
-                if math.gcd(n,m) == 1 and (n*m)%2==0:
-                        a=k*(m**2-n**2)
-                        b=k*(2*m*n)
-                        c=k*(m**2+n**2)
-                        list.append([k,a,b,c])
-    return list
-
-def generate_list_2(max):
-    list = []
     
-    for k in range(1,max+1):
+    for k in range(1,4):
+        print("k =",k)
         for m in range(1,max+1):
-            for n in range(1,m+1):
+            for n in range(1,m):
                 if math.gcd(n,m) == 1 and (n*m)%2==0:
                         a=k*(m**2-n**2)
                         b=k*(2*m*n)
@@ -52,6 +43,22 @@ def generate_list_2(max):
                      
     return list
 
-# make list iterate until len(list) is == max
+def generate_primitive_triplets(max):
+    list = []
+    for m in range(1,max+1):
+        for n in range(1,m):
+            if math.gcd(n,m) == 1 and (n*m)%2==0:
+                    a=(m**2-n**2)
+                    b=(2*m*n)
+                    c=(m**2+n**2)
+                    list.append([a,b,c])
+            if len(list) == max:
+                    break
+        else:
+            continue
+        break
+                    
+    return list
 
-print(generate_list_2(4))
+print(generate_list(100))
+     
