@@ -20,28 +20,39 @@ import math
 
 sums = []
 
-def generate_list(max):
+def generate_triplets(max):
     list = []
-    
-    for k in range(1,4):
-        print("k =",k)
-        for m in range(1,max+1):
-            for n in range(1,m):
-                if math.gcd(n,m) == 1 and (n*m)%2==0:
-                        a=k*(m**2-n**2)
-                        b=k*(2*m*n)
-                        c=k*(m**2+n**2)
+    newlist = []
+    for m in range(1,max+1):
+        for n in range(1,m):
+            if math.gcd(n,m) == 1 and (n*m)%2==0:
+                    a=(m**2-n**2)
+                    b=(2*m*n)
+                    c=(m**2+n**2)
+                    if a<b:
                         list.append([a,b,c])
-                if len(list) == max:
-                     break
-            else:
-                continue
-            break
+                    else:
+                         list.append([b,a,c])
+            if len(list) == max:
+                    break
         else:
             continue
         break
-                     
-    return list
+    
+    # scale everything up using k
+    newlist.append(list)
+    for k in range(2,int(math.sqrt(max))): # arbitrary limit
+         newlist.append([[j*k for j in i] for i in list])
+    newlist = [item for row in newlist for item in row]
+    
+    newlist.sort()                
+    return newlist
+
+
+
+
+
+
 
 def generate_primitive_triplets(max):
     list = []
@@ -60,9 +71,10 @@ def generate_primitive_triplets(max):
         else:
             continue
         break
-                    
+
+    list.sort()                
     return list
 
-list = generate_primitive_triplets(100)
+print(generate_triplets(100))
 
 
