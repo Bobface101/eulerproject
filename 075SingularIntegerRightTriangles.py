@@ -75,6 +75,6 @@ def generate_primitive_triplets(max):
     list.sort()                
     return list
 
-print(generate_triplets(100))
+print(generate_primitive_triplets(1_500_000))
 
 
