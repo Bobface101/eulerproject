@@ -51,7 +51,10 @@ def generate_primitive_triplets(max):
                     a=(m**2-n**2)
                     b=(2*m*n)
                     c=(m**2+n**2)
-                    list.append([a,b,c])
+                    if a<b:
+                        list.append([a,b,c])
+                    else:
+                         list.append([b,a,c])
             if len(list) == max:
                     break
         else:
@@ -60,5 +63,6 @@ def generate_primitive_triplets(max):
                     
     return list
 
-print(generate_list(100))
-     
+list = generate_primitive_triplets(100)
+
+
